@@ -84,13 +84,14 @@ The application follows this pipeline:
 
 ## Screenshots
 - **Home Screen**:
-  ![home]('screenshots/home_screen.jpeg')
+
+  ![home](screenshots/home_screen)
 - **File Upload Dialog**:
 - 
 - **Analysis in Progress**:  
-  ![home]('screenshots/analysis.jpeg')
+  ![analysis](screenshots/analysis.jpeg)
 - **Result Display**:  
-  ![home]('screenshots/result_screen.jpeg')
+  ![result](screenshots/results_screen.jpeg)
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
