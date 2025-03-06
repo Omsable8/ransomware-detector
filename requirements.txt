@@ -1,0 +1,28 @@
+# GUI Libraries
+customtkinter
+PyQt5
+tcl
+
+# Machine Learning & Data Processing
+xgboost
+scikit-learn
+pandas
+numpy
+joblib
+matplotlib
+seaborn
+
+# Virtualization & Sandbox Tools
+# cuckoo #pip2 install -u cuckoo
+volatility3
+# virtualbox
+psutil
+# Network Analysis
+pyshark
+# wireshark
+scapy
+
+# Other Utilities
+pyinstaller
+requests
+tqdm
