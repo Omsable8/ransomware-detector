@@ -44,21 +44,28 @@ def get_service_by_port(packet):
             dst_port = int(packet.tcp.dstport)
             src_port = int(packet.tcp.srcport)
             if dst_port == 80 or src_port == 80:
-                return "HTTP"
+                return "http"
             elif dst_port == 443 or src_port == 443:
-                return "HTTPS"
+                return "https"
             elif dst_port == 6667 or src_port == 6667:
-                return "IRC"
+                return "irc"
             elif dst_port == 53 or src_port == 53:
-                return "DNS"
+                return "dns"
+            elif dst_port == 123 or src_port == 123:
+                return "ntp"
+            elif dst_port == 22 or src_port == 22:
+                return "ssh"
+            
         # Check if the packet has UDP layer
         if hasattr(packet, 'udp'):
             dst_port = int(packet.udp.dstport)
             src_port = int(packet.udp.srcport)
             if dst_port == 53 or src_port==53:
-                return "DNS"
+                return "dns"
             elif dst_port == 123 or src_port == 123:
-                return "NTP"
+                return "ntp"
+            elif dst_port == 22 or src_port == 22:
+                return "ssh"
         return "UNKNOWN"
     except Exception as e:
         # In case of any error, return UNKNOWN
@@ -184,9 +191,12 @@ def clean_network(file_path="network_features.csv"):
     
     # One-Hot Encoding for `proto` and `service`
     df["proto_udp"] = (df["proto"] == "UDP").astype(int) if "proto" in df.columns else 0
-    df["service_dns"] = (df["service"] == "DNS").astype(int) if "service" in df.columns else 0
-    df["service_http"] = (df["service"] == "HTTP").astype(int) if "service" in df.columns else 0
-    df["service_irc"] = (df["service"] == "IRC").astype(int) if "service" in df.columns else 0
+    df["service_dns"] = (df["service"] == "dns").astype(int) if "service" in df.columns else 0
+    df["service_http"] = (df["service"] == "http").astype(int) if "service" in df.columns else 0
+    df["service_https"] = (df["service"] == "https").astype(int) if "service" in df.columns else 0
+    df["service_irc"] = (df["service"] == "irc").astype(int) if "service" in df.columns else 0
+    df["service_ntp"] = (df["service"] == "ntp").astype(int) if "service" in df.columns else 0
+    df["service_ssh"] = (df["service"] == "ssh").astype(int) if "service" in df.columns else 0
 
     # Drop non-numeric categorical columns
     df.drop(columns=["proto", "service","id.orig_h","id.resp_h"], errors="ignore", inplace=True)
